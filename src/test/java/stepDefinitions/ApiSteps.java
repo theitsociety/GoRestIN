@@ -5,6 +5,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.restassured.RestAssured;
+import io.restassured.response.Response;
 import junit.framework.AssertionFailedError;
 import org.apache.http.util.Asserts;
 import org.junit.Assert;
@@ -97,4 +98,17 @@ public class ApiSteps extends ApiValidation {
 		System.out.println("Assertion successful " + actualStatus);*/
 
 	}
+
+	@Given("set api endpoint {string}{string}")
+	public void setApiEndpoint(String endpoint, String userId) {
+		RestAssured.basePath=(endpoint+userId);
+	}
+
+	@And("Update the user with request body {string},{string},{string},{string}")
+	public void updateTheUserWithRequestBody(String name, String gender, String email, String status) {
+			response=putMethod(name,gender,email,status);
+			response.prettyPrint();
+	}
+
+
 }

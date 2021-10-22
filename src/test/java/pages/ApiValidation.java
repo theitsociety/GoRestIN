@@ -25,6 +25,18 @@ public class ApiValidation {
 		return response;
 	}
 
+	public Response putMethod(String name, String gender, String email, String status) {
+		String requestBody = updateBody(name, gender, email, status);
+		Response response = given()
+				.headers("Authorization", "Bearer 7c1158095623c6486eae51ffd8f901971ac32060fe9dde5f0c94c14404817c0d",
+						"Content-Type", "application/json", "Accept", ContentType.JSON)
+				.body(requestBody)
+				.put();
+
+		return response;
+	}
+
+
 	private String updateBody(String name, String gender, String email, String status) {
 		String body = "";
 		try {
@@ -38,4 +50,6 @@ public class ApiValidation {
 		}
 		return body;
 	}
+
+
 }
