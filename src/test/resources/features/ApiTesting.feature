@@ -16,7 +16,7 @@ Feature: Api testing for CRUID operators
     And validate the user Status is "<Status>"
 
     Examples: User Details table
-      | Name       | Gender | Email             | Status |
+      | Name       | Gender | Email            | Status |
       | John Doe 8 | male   | john26@gmail.com | active |
 
 
@@ -30,11 +30,20 @@ Feature: Api testing for CRUID operators
     And validate the user Status is "<Status>"
 
     Examples: User Details table
-      | Name         | Gender | Email             | Status | userId |
+      | Name         | Gender | Email            | Status | userId |
       | John Doe 133 | male   | john26@gmail.com | active | 13954  |
 
+  Scenario Outline: Create a post and comment
+    Given user sets "<EndpointPost>" post
+    And create a post with given userId and create one "<Body>" and "<Title>"
+    When user sets "<EndpointComment>" post and create one "<Comment>" using "<userId>", "<name>", "<email>", "<comment body>"
+    Then verify that comment created "<name>" "<email>"
 
+    Examples:
+      | EndpointPost                   | EndpointComment                   | userId | Body              | Title                  | Comment       | name    | email             | comment body         |
+      | public/v1/users/<userId>/posts | public/v1/posts/<userId>/comments | 13954  | Body post message | this is my first title | first comment | My Name | asdasda@gmail.com | This is comment body |
 
+    
     ####################################################
   # Alternate scenario
 

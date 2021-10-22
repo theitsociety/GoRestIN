@@ -58,6 +58,16 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/test/resources/data/createComment.json">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/test/resources/data/postCreate.json">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/test/resources/data/userDetails.json">
           <value>
             <set />
