@@ -3,6 +3,7 @@ package pages;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
+import utulities.ConfigurationReader;
 
 import java.io.File;
 import java.io.IOException;
@@ -35,7 +36,6 @@ public class ApiValidation {
 						"Content-Type", "application/json", "Accept", ContentType.JSON)
 				.body(requestBody)
 				.post();
-
 		return response;
 	}
 
@@ -99,5 +99,11 @@ public class ApiValidation {
 		return response;
 	}
 
-
+	public Response deleteMethod() {
+		Response response=given()
+				.headers("Authorization","Bearer "+ ConfigurationReader.getProperty("bearerToken"),
+						"Content-Type", "application/json", "Accept", ContentType.JSON)
+				.delete();
+		return response;
+	}
 }

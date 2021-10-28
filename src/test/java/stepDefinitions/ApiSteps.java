@@ -35,7 +35,17 @@ public class ApiSteps extends ApiValidation {
 	}
 
 	@Then("validate the status code {int}")
-	public void validateTheStatusCode(int expectedStatusCode) {
+	public void validateTheStatusCode(int expectedStatusCode,DataTable dataTable) {
+		/*
+		    |status code|type|another value|
+    |201        |json|xml          |
+
+    { ""status code",201},}
+    {{status code, type,another value},{201,json,xml}}
+    0,0=> statrus code
+    1,0=>201
+
+		 */
 		int actualStatusCode = response.getStatusCode();
 		try {
 			Assert.assertEquals(expectedStatusCode, actualStatusCode);
@@ -148,6 +158,72 @@ public class ApiSteps extends ApiValidation {
 		Assert.assertEquals(email, actualEmail);
 		System.out.println("Assertion successful");
 	}
+
+
+	/**
+	 * DELTE USER
+	 */
+
+	@Given("user set endpoint {string} for {string} userid")
+	public void userSetEndpoint(String endPoint, String userId) {
+		RestAssured.basePath = endPoint + userId;
+
+	}
+
+	@And("use DELETE request to delete specific user")
+	public void useDELETERequestToDeleteSpesificUser() {
+		response = deleteMethod();
+		response.prettyPrint();
+	}
+
+	@Then("validate the response status code is {int}")
+	public void validateTheResponseStatusCodeIs(int expectedCode) {
+
+		int code = 0;
+		try {
+			code = response.jsonPath().getInt("code");
+			System.out.println(code);
+		} catch (Exception i) {
+			i.printStackTrace();
+		}
+
+		try {
+			Assert.assertEquals(code, expectedCode);
+			System.out.println("Assertion successful for code");
+		} catch (AssertionError ae) {
+			ae.printStackTrace();
+		}
+	}
+
+	@Then("try to get the user data and validate response code is {int}")
+	public void tryToGetTheUserDataAndValidateResponseCodeIs(int expectedCode) {
+		response = deleteMethod();
+		int code = response.jsonPath().getInt("code");
+		System.out.println(code);
+		try {
+			Assert.assertEquals(code, expectedCode);
+			System.out.println("Assertion successful for code");
+		} catch (AssertionError ae) {
+			ae.printStackTrace();
+		}
+	}
+
+
+
+	@Then("validate with response message {string}")
+	public void validateWithResponseMessage(String expectedMessage) {
+		response.prettyPrint();
+		String message = response.jsonPath().get("data.message");
+		System.out.println(message);
+		try {
+			Assert.assertEquals(message, expectedMessage);
+			System.out.println("Assertion successful for message");
+		} catch (AssertionError ae) {
+			ae.printStackTrace();
+		}
+	}
+
+
 
 
 }
