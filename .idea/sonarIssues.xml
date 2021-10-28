@@ -13,6 +13,16 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../Ders Icerikleri/Api Assesment/Api_Automation_Assignment-master/src/test/java/stepDefinitions/ApiValidationSteps.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/LICENSE">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/config.properties">
           <value>
             <set />
@@ -49,6 +59,21 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/test/java/stepDefinitions/MyStepdefs.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/test/java/utulities/ConfigurationReader.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/test/resources/data/createComment.json">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/test/resources/data/postCreate.json">
           <value>
             <set />
           </value>
